@@ -73,7 +73,7 @@ public class Die {
         System.out.println("Rolly:" + y.roll());
         System.out.println("Rollz:" + z.roll());
         sum = x.roll() + y.roll() + z.roll();
-        System.out.println("Sum of these three die is: " + sum);
+        System.out.println("Sum of random three die is: " + sum);
 
 
 
