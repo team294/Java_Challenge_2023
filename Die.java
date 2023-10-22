@@ -1,56 +1,83 @@
 import java.util.ArrayList;
+import java.util.List;
 
-public class Die
-{
+
+public class Die {
     int numSides;
-    int lastRoll = -1;
-    int rollNum = 0;
+    boolean lastroll = false;
+    int x;
+    List<Integer> l1 = new ArrayList<Integer>();
 
-
-    ArrayList<String> number  = new ArrayList<String>();
 
     public Die() {
-        numSides = 6;
-    }
-
-    public Die(int n) {
-        numSides = n;
-    }
-
-    int numSides() {
-        return numSides;
-    }
-
-    int roll() {
+            numSides=6;
+        }
+    public Die(int i) {
+            numSides = i;
+        }
+       
+   
+    int roll()
+    {
+        int roll;
         int max = numSides;
-        int min = 1;
-        int range = max - min + 1;
-
-        int roll = (int)(Math.random() * range) + min;
-        lastRoll = roll;
-        rollNum += 1;
-        System.out.println("Roll Number: " + rollNum + " Rolled " + roll);
+        int min =1;
+        int range = max-min+1;
+        lastroll = true;
+       
+        roll = (int)(Math.random() * range) + min;
+        l1.add(roll);
+       
         return roll;
     }
 
-    int readLastRoll() {
-        if(lastRoll != -1) {
-            System.out.println("Last roll was " + lastRoll);
-        } else {
-            System.out.println("Roll a die first");
-        }
-        System.out.println("Rolled a total of: " + rollNum + " times");
-        return lastRoll;
-    }
-  
-    public static void main(String[] args) {
 
-        Die die = new Die();
-        for (int i=0; i<5; i++) {
-            die.roll();
+    int readLastroll() {
+        if (lastroll == true) {
+            return l1.get(l1.size() - 1);
         }
-        die.readLastRoll();
-        int sum = die.roll() + die.roll() + die.roll();
+        else {
+            System.out.println("Roll the Die First");
+             
+             return -1;
+             }
+
+
+       
+     }
+
+
+   
+
+
+   
+       
+   
+   
+    public static void main(String[] args)
+    {
+        Die x = new Die(6);
+        Die y = new Die(6);
+        Die z = new Die(6);
+        System.out.println("Number of Sides: " + x.numSides);
+        System.out.println("Roll:" + x.roll());
+        System.out.println("Roll:" + x.roll());
+        System.out.println("Roll:" + x.roll());
+        System.out.println("Roll:" + x.roll());
+        System.out.println("Last Roll: " + x.readLastroll());
+        int sum;
+        System.out.println("Rollx:" + x.roll());
+        System.out.println("Rolly:" + y.roll());
+        System.out.println("Rollz:" + z.roll());
+        sum = x.roll() + y.roll() + z.roll();
         System.out.println("Sum of three random die is: " + sum);
+
+
+
+
+       
     }
+
+
+   
 }
